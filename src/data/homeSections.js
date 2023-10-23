@@ -100,7 +100,7 @@ export const homeSections = {
                 <>
                     <Form>
                         <Input onValidate={validate} type='text' name='text' label='name' required={true} />
-                        <Input onValidate={e => validate(e, /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)} type='email' name='email' label='email' required={true} />
+                        <Input onValidate={e => validate(e, /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g)} type='email' name='email' label='email' required={true} />
                         <Input onValidate={validate} type='textarea' name='message' label='message' required={false} />
                         <button type="submit">Send</button>
                     </Form>
