@@ -1,0 +1,46 @@
+h1 {
+    font-size: 120%;
+    font-weight: 500;
+}
+
+h2 {
+    margin: 0 0 30px;
+    font-size: 120%;
+    font-size: clamp(20px, 160%, 7vw);
+    font-weight: 300;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+        content: "";
+        border-bottom: 15px solid var(--highlight);
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        bottom: -2px;
+        z-index: -10;
+        opacity: 0.7;
+    }
+}
+
+h3,
+h4 {
+    margin: 0 0 10px;
+}
+
+h4 {
+    font-weight: 400;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--highlight)
+}
+
+.large-text {
+    font-size: 120%;
+    font-size: clamp(20px, 250%, 7vw);
+}

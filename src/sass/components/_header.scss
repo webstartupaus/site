@@ -1,0 +1,68 @@
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--white);
+    font-weight: 500;
+    text-transform: uppercase;
+    z-index: 10;
+
+    .name {
+        font-weight: 500;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    nav {
+        margin-left: auto;
+
+        a {
+            padding: 20px 12px;
+        }
+    }
+
+    button.mobile-menu {
+        display: none;
+        z-index: 100;
+        margin-left: auto;
+        padding: 10px;
+        width: 40px;
+        // height: 40px;
+        // text-align: center;
+        line-height: 0;
+        background: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        nav {
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+            z-index: 12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: left 0.3s ease;
+        }
+
+        button.mobile-menu {
+            display: block;
+        }
+
+        &.active {
+            nav {
+                left: 0;
+                flex-flow: column;
+            }
+        }
+    }
+}

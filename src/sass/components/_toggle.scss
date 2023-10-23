@@ -1,0 +1,70 @@
+.toggle {
+    position: relative;
+    margin-left: 7vw;
+    display: flex;
+
+    .bg {
+        display: block;
+        width: 60px;
+        height: 30px;
+        background: var(--white);
+        border-radius: 30px;
+    }
+
+    &:hover .bg {
+        border: 1px solid #ccc;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: pointer;
+    }
+
+    .circle,
+    .icons {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .circle {
+        left: 6px;
+        width: 22px;
+        height: 22px;
+        padding: 4px;
+        background: var(--highlight);
+        border-radius: 50%;
+        transition: left 0.3s ease;
+    }
+
+    input:checked~.circle {
+        left: calc(100% - 27px);
+    }
+
+    .icons {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        svg {
+            &:first-of-type {
+                margin-left: 9px;
+            }
+
+            &:nth-of-type(2) {
+                margin-left: 5px;
+            }
+
+            path {
+                fill: #333;
+            }
+        }
+    }
+}

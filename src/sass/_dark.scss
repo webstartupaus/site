@@ -1,0 +1,55 @@
+body.dark {
+    background: var(--grey);
+    color: var(--white);
+
+    a {
+        color: var(--white);
+
+        &:hover {
+            color: var(--highlight);
+        }
+
+        &.active {
+            color: var(--highlight)
+        }
+    }
+
+    button {
+        background-color: var(--white);
+        color: var(--grey);
+    }
+
+    header,
+    header nav {
+        background: var(--grey);
+    }
+
+    .post {
+        background: var(--grey);
+
+        &::before {
+            background-color: var(--white);
+        }
+    }
+
+    path {
+        fill: var(--white);
+    }
+
+    .backUp {
+        path {
+            fill: var(--grey);
+        }
+
+        &:hover path {
+            fill: var(--white);
+        }
+    }
+
+    .skills {
+        h3 {
+            background: var(--white);
+            color: var(--grey);
+        }
+    }
+}
