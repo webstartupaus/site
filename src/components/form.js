@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 
-const Form = ({ button, inputs }) => {
+const Form = ({ button, inputs, name }) => {
     const [formVals, setFormVals] = useState({});
-
-    const encode = (data) => {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&");
-    }
 
     function netlifySubmit(e) {
         e.preventDefault();
@@ -15,15 +9,18 @@ const Form = ({ button, inputs }) => {
         let button = e.currentTarget.querySelector('button');
         button.innerHTML = 'sending';
         button.disabled = true;
-        // e.currentTarget.reset();
+
+        const myForm = e.target;
+        const formData = new FormData(myForm);
 
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode({ 'form-name': 'contact', ...formVals })
+            body: new URLSearchParams(formData).toString(),
         })
             .then(() => {
                 button.innerHTML = 'sent';
+                myForm.reset();
                 setTimeout(() => {
                     button.innerHTML = 'send'
                     button.disabled = false;
@@ -68,26 +65,34 @@ const Form = ({ button, inputs }) => {
     );
 }
 
-const Input = ({ onValidate, val: { tag, type, name, required } }) => {
+const Input = ({ onValidate, val: { tag, type, name, value, required }, label = true }) => {
     let html;
 
     switch (tag) {
         case 'textarea':
-            html = <textarea name={name} rows='5' onChange={onValidate} onBlur={onValidate} required={required}></textarea>
+            html = <textarea name={name} rows='5' onChange={onValidate} onBlur={onValidate} required={required}></textarea>;
             break;
         case 'input':
-            html = <input type={type} name={name} onChange={onValidate} onBlur={onValidate} required={required} />
+            html = <input type={type} name={name} onChange={onValidate} onBlur={onValidate} required={required} />;
+            break;
+        case 'hidden':
+            html = <input type="hidden" name={name} defaultValue={value} />;
+            label = false;
             break;
         default:
             return;
     }
 
+    if (label) {
+        html = <label>
+            <span>{name}</span>
+            {html}
+        </label>
+    }
+
     return (
         <div className="frm-grp">
-            <label>
-                <span>{name}</span>
-                {html}
-            </label>
+            {html}
         </div>
     );
 }

@@ -87,12 +87,13 @@ export const homeSections = {
             const inputs = [
                 { tag: 'input', type: 'text', name: 'name', required: true, pattern: false },
                 { tag: 'input', type: 'email', name: 'email', required: true, pattern: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g },
-                { tag: 'textarea', type: null, name: 'message', required: false, pattern: false }
+                { tag: 'textarea', type: null, name: 'message', required: false, pattern: false },
+                { tag: 'hidden', name: 'form-name', value: 'contact' }
             ]
 
             return (
                 <>
-                    <Form button='send' inputs={inputs} />
+                    <Form button='send' inputs={inputs} name='contact' />
 
                     <p className="icons"><a href="https://www.linkedin.com/in/josh-winkler-17703b86/" rel='noreferrer'>{Icon.linkedin}</a> <a href="https://github.com/webstartupaus" rel='noreferrer'>{Icon.github}</a> <button className="link" onClick={email}>{Icon.email}</button></p>
                 </>
