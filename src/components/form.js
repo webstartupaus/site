@@ -14,10 +14,7 @@ const Form = ({ button, inputs }) => {
 
         let button = e.currentTarget.querySelector('button');
         button.innerHTML = 'sending';
-        button.disabled = true;
-
-        setFormVals({});
-        e.currentTarget.reset();
+        button.disabled = true;        
 
         fetch('/', {
             method: 'POST',
@@ -29,6 +26,8 @@ const Form = ({ button, inputs }) => {
                 setTimeout(() => {
                     button.innerHTML = 'send'
                     button.disabled = false;
+                    setFormVals({});
+                    e.currentTarget.reset();
                 }, 2000);
             })
             .catch((e) => console.log(e));
