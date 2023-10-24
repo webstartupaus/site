@@ -15,7 +15,7 @@ const Form = ({ button, inputs }) => {
         let button = e.currentTarget.querySelector('button');
         button.innerHTML = 'sending';
         button.disabled = true;
-        e.currentTarget.reset();
+        // e.currentTarget.reset();
 
         fetch('/', {
             method: 'POST',
