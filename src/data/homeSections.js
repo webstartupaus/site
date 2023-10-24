@@ -85,10 +85,10 @@ export const homeSections = {
             }
 
             const inputs = [
+                { tag: 'hidden', name: 'form-name', value: 'hello' },
                 { tag: 'input', type: 'text', name: 'name', required: true, pattern: false },
                 { tag: 'input', type: 'email', name: 'email', required: true, pattern: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g },
-                { tag: 'textarea', type: null, name: 'message', required: false, pattern: false },
-                { tag: 'hidden', name: 'form-name', value: 'hello' }
+                { tag: 'textarea', type: null, name: 'message', required: false, pattern: false }
             ]
 
             return (
