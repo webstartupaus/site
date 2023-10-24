@@ -8,6 +8,11 @@ form {
         max-width: 200px;
         margin-top: 10px;
         margin-left: auto;
+
+        &.good {
+            background: green;
+            color: var(--white);
+        }
     }
     
     input,

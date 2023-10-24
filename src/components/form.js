@@ -23,7 +23,9 @@ const Form = ({ button, inputs, name }) => {
             .then(() => {
                 button.innerHTML = 'sent';
                 myForm.reset();
+                button.classList.add('good');
                 setTimeout(() => {
+                    button.classList.remove('good');
                     button.innerHTML = 'send'
                     button.disabled = false;
                     setFormVals({});
