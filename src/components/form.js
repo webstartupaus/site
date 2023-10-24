@@ -59,7 +59,7 @@ const Form = ({ button, inputs, name }) => {
     }, [inputs]);
 
     return (
-        <form onSubmit={netlifySubmit} name="contact" netlify-honeypot="bot-field" data-netlify="true">
+        <form onSubmit={netlifySubmit} method="POST" name="contact" netlify-honeypot="bot-field" data-netlify="true">
             {inputs.map((input, i) =>
                 <Input onValidate={e => validate(e, input.pattern)} val={{ ...input }} key={i} />
             )}
