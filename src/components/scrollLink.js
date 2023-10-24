@@ -9,7 +9,7 @@ const ScrollLink = ({ link = '/', text, highlight = null, css = '', isScroll = t
         
         if (isScroll) {
             // add section to URL to keep place if refreshed
-            if (link !== 'toTop') window.history.pushState(null, 'J Portfolio', 'http://localhost:3000/' + link);
+            if (link !== 'toTop') window.history.pushState(null, 'J Portfolio', 'http://localhost:3000' + link);
             else window.history.pushState(null, 'J Portfolio', 'http://localhost:3000');
 
             // remove active links
