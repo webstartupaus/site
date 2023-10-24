@@ -1,5 +1,6 @@
 @use 'general';
 @use 'text';
+@use 'components/links';
 @use 'components/header';
 @use 'components/backToTop';
 @use 'components/slides';
@@ -8,4 +9,5 @@
 @use 'components/skills';
 @use 'components/toggle';
 @use 'components/form';
+@use 'components/icons';
 @use 'dark';

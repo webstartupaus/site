@@ -14,7 +14,7 @@ body.dark {
         }
     }
 
-    button {
+    button:not(.link) {
         background-color: var(--white);
         color: var(--grey);
     }

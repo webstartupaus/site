@@ -9,8 +9,9 @@ const ScrollLink = ({ link = '/', text, highlight = null, css = '', isScroll = t
         e.preventDefault();
         
         if (isScroll) {
-            // if redirected from page, remove section from URL
-            if (params.section) window.history.pushState(null, 'J Portfolio', 'http://localhost:3000');
+            // add section to URL to keep place if refreshed
+            if (link !== 'toTop') window.history.pushState(null, 'J Portfolio', `http://localhost:3000/${link}`);
+            else window.history.pushState(null, 'J Portfolio', 'http://localhost:3000');
 
             // remove active links
             let activeLink = document.querySelector('nav .active');

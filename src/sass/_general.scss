@@ -80,37 +80,21 @@ footer {
     text-align: center;
 }
 
-a {
-    text-decoration: none;
-    transition: all 0.3s ease;
-    color: var(--grey);
-
-    &:visited,
-    &:active {
-        color: var(--grey);
-    }
-
-    &.active {
-        color: var(--highlight);
-    }
-
-    &:hover {
-        color: var(--highlight);
-    }
-}
-
 button {
     cursor: pointer;
-    background-color: var(--grey);
     border: none;
-    color: var(--white);
-    padding: 12px 20px;
-    font-weight: 500;
-    font-size: 90%;
-    transition: background-color 0.3s ease;
 
-    &:hover {
-        background-color: var(--highlight) !important;
+    &:not(.link) {
+        background-color: var(--grey);
+        color: var(--white);
+        padding: 12px 20px;
+        font-weight: 500;
+        font-size: 90%;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: var(--highlight) !important;
+        }
     }
 }
 

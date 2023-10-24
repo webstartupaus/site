@@ -107,6 +107,11 @@ button:hover {
   justify-content: center;
 }
 
+.bean {
+  font-size: 600%;
+  text-align: center;
+}
+
 h1 {
   font-size: 120%;
   font-weight: 500;

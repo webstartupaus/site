@@ -1,0 +1,27 @@
+.icons {
+    text-align: center;
+
+    &.bean {
+        font-size: 600%;
+    }
+
+    a,
+    button.link {
+        svg {
+            font-size: 200%;
+
+            path {
+                transition: fill 0.3s ease;
+            }
+        }
+
+        &:hover svg path {
+            fill: var(--highlight);
+        }
+    }
+}
+
+#contact .icons {
+    border-top: 1px solid;
+    padding-top: 10px;
+}

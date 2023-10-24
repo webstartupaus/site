@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Icon } from "./icons";
+import { Icon } from "../assets/icons";
 
 const Slides = ({ images }) => {
     const index = useRef(0);

@@ -15,6 +15,8 @@ const Home = () => {
     const isSection = sections.indexOf(params.section) !== -1;
 
     useEffect(() => {
+        document.title = 'Josh Winkler Portfolio';
+        
         if (params.id && !isSection) {
             navigate('/');
         }

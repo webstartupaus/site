@@ -12,13 +12,14 @@ const Post = () => {
     const params = useParams();
     const navigate = useNavigate();
 
-    let content = params.cat === 'work' ? Work : (params.cat === 'project' ? Projects : null);
-    let article = content.articles[params.post];
-
+    const content = params.cat === 'work' ? Work : (params.cat === 'project' ? Projects : null);
+    const article = content.articles[params.post];
+    
     useEffect(() => {
         if (!content || article === undefined) navigate('/');
-        document.title = `${article.name} | JW`;
-        console.log('scroll');
+        
+        const cat = params.cat.charAt(0).toUpperCase() + params.cat.slice(1);
+        document.title = `${article.name} ${cat} | JW`;
         window.scrollTo({
             top: document.getElementById('toTop').offsetTop,
             behavior: "smooth"

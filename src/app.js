@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import './main.css';
+import './main.min.css';
 
 import Home from './templates/home';
 import Post from './templates/post';

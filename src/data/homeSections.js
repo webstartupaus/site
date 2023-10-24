@@ -1,6 +1,7 @@
 import Posts from "../components/posts";
 import Form from "../components/form";
 import Input from "../components/input";
+import { Icon } from "../assets/icons";
 
 import { skills } from "./skills";
 import { Projects } from '../data/projects';
@@ -52,18 +53,11 @@ export const homeSections = {
 
             return (
                 <>
-                    <p>
-                        Born in Bristol, England, I moved to Australia in 2006 with my family of 6. I have always had an interest in technology, with that interest becoming more specific over time.
-                    </p>
-                    <p>
-                        My first "website" was made in PowerPoint, we were tasked with creating a hypothetical PowerPoint for display in the school foyer. I made mine with the basic principles of a website, with a home page, links to different areas with relevant information and, as it was the early thousands, the odd sound few sound effects, gifs and clipart.
-                    </p>
-                    <p>
-                        Through school and beyond, I continued to learn things like what are HTML and CSS. In 2014, I had a short job where I learnt a lot about databases. That left me with a problem; I understood the front end and had an idea of how databases work, but how to connect the two?
-                    </p>
-                    <p>
-                        In 2015, after years of self-taught learning, I took a 6-month diploma course in web development to fill that gap. It taught me web programming and SQL, bringing me to a point where I could cover all ends of building a website. Since, I have continued to learn and grow in design, front-end and back-end skills.
-                    </p>
+                    <p>Born in Bristol, England, I moved to Australia in 2006 with my family of 6. I have always had an interest in technology, with that interest becoming more specific over time.</p>
+                    <p>My first "website" was made in PowerPoint for school; we were tasked with creating a hypothetical informational PowerPoint for display in the foyer.I made mine with the basic principles of a website, with slides as pages, a home page, links to different areas with relevant information and, as it was the early thousands, the odd few sound effects, gifs and clipart.</p>
+                    <p className="icons bean">{Icon.bean}</p>
+                    <p>Through school and beyond, I continued to learn things like what are HTML and CSS. In 2014, I had a short job where I learnt about databases which left me with a problem; I understood the front end and had an idea of how databases work, but how to connect the two?</p>
+                    <p>In 2015, after years of self-taught learning, I took a 6-month diploma course in web development to fill that gap. It taught me web programming and SQL, bringing me to a point where I could cover all ends of building a website. Since, I have continued to learn and grow in design, front-end and back-end skills.</p>
                     <h3>Skills</h3>
                     <div className="skills">
                         {skillsList.map((skill, i) => {
@@ -88,12 +82,18 @@ export const homeSections = {
             function validate(e, pattern) {
                 let input = e.currentTarget;
                 let val = input.value;
-                
+
                 if (input.attributes.required && val.length <= 0) return e.currentTarget.classList.add('error');
 
                 if (pattern && !val.match(pattern)) return e.currentTarget.classList.add('error');
 
                 e.currentTarget.classList.remove('error');
+            }
+
+            function email(e) {
+                e.preventDefault();
+                let email = 'w|e|b|s|t|a|r|t|u|p|a|u@|g|m|a|i|l|.|c|o|m';
+                window.location.href = 'mailto:' + email.replaceAll('|', '');
             }
 
             return (
@@ -105,7 +105,7 @@ export const homeSections = {
                         <button type="submit">Send</button>
                     </Form>
 
-                    <p>To contact me, you can find me on <a href="https://www.linkedin.com/in/josh-winkler-17703b86/" rel='noreferrer'>LinkedIn</a></p>
+                    <p className="icons"><a href="https://www.linkedin.com/in/josh-winkler-17703b86/" rel='noreferrer'>{Icon.linkedin}</a> <a href="https://github.com/webstartupaus" rel='noreferrer'>{Icon.github}</a> <button className="link" onClick={email}>{Icon.email}</button></p>
                 </>
             );
         }

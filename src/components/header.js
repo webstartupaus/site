@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
 import ScrollLink from './scrollLink';
-import { Icon } from "./icons";
+import { Icon } from "../assets/icons";
 
 const Header = ({ scroll }) => {
     const [isOpen, setOpen] = useState(false);

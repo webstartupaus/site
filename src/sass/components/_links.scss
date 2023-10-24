@@ -1,0 +1,22 @@
+a,
+button.link {
+    padding: 0;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--grey);
+    background: none;
+    transition: all 0.3s ease;
+
+    &:visited,
+    &:active {
+        color: var(--grey);
+    }
+
+    &.active {
+        color: var(--highlight);
+    }
+
+    &:hover {
+        color: var(--highlight);
+    }
+}
