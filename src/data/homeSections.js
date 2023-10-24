@@ -1,6 +1,5 @@
 import Posts from "../components/posts";
 import Form from "../components/form";
-import Input from "../components/input";
 import { Icon } from "../assets/icons";
 
 import { skills } from "./skills";
