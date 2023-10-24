@@ -14,7 +14,8 @@ const Form = ({ button, inputs }) => {
 
         let button = e.currentTarget.querySelector('button');
         button.innerHTML = 'sending';
-        button.disabled = true;        
+        button.disabled = true;
+        e.currentTarget.reset();
 
         fetch('/', {
             method: 'POST',
@@ -27,10 +28,13 @@ const Form = ({ button, inputs }) => {
                     button.innerHTML = 'send'
                     button.disabled = false;
                     setFormVals({});
-                    e.currentTarget.reset();
                 }, 2000);
             })
-            .catch((e) => console.log(e));
+            .catch((e) => {
+                button.innerHTML = 'send'
+                button.disabled = false;
+                console.log(e);
+            });
     }
 
     function validate(e, pattern) {
