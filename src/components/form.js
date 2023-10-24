@@ -14,7 +14,6 @@ const Form = ({ button, inputs, name }) => {
         const formData = new FormData(myForm);
 
         console.log(new URLSearchParams(formData).toString());
-        // return;
 
         fetch('/', {
             method: 'POST',
@@ -59,7 +58,7 @@ const Form = ({ button, inputs, name }) => {
     }, [inputs]);
 
     return (
-        <form onSubmit={netlifySubmit} method="POST" name="contact" netlify-honeypot="bot-field" data-netlify="true">
+        <form onSubmit={netlifySubmit} name={name} netlify-honeypot="bot-field" data-netlify="true">
             {inputs.map((input, i) =>
                 <Input onValidate={e => validate(e, input.pattern)} val={{ ...input }} key={i} />
             )}
