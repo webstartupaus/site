@@ -94,9 +94,7 @@ const Input = ({ onValidate, val: { tag, type, name, value, required }, label = 
     }
 
     return (
-        <div className="frm-grp">
-            {html}
-        </div>
+        <>{html}</>
     );
 }
 
