@@ -11,11 +11,14 @@ form {
     textarea {
         display: block;
         width: 100%;
-        padding: 8px;
+        padding: 8px 8px 8px 13px;
+        border: 2px solid var(--white);
+        border-left-width: 0;
         font-size: 110%;
-        transition: border 0.3s ease;
+        transition: all 0.3s ease;
 
         &.error {
+            padding: 8px 8px 8px 8px;
             border: 2px solid red;
             border-left-width: 5px;
             background-color: rgb(255, 214, 214);

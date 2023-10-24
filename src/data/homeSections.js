@@ -79,31 +79,21 @@ export const homeSections = {
         container: 'wide',
         title: 'Contact',
         fn: () => {
-            function validate(e, pattern) {
-                let input = e.currentTarget;
-                let val = input.value;
-
-                if (input.attributes.required && val.length <= 0) return e.currentTarget.classList.add('error');
-
-                if (pattern && !val.match(pattern)) return e.currentTarget.classList.add('error');
-
-                e.currentTarget.classList.remove('error');
-            }
-
             function email(e) {
                 e.preventDefault();
                 let email = 'w|e|b|s|t|a|r|t|u|p|a|u@|g|m|a|i|l|.|c|o|m';
                 window.location.href = 'mailto:' + email.replaceAll('|', '');
             }
 
+            const inputs = [
+                { tag: 'input', type: 'text', name: 'name', required: true, pattern: false },
+                { tag: 'input', type: 'email', name: 'email', required: true, pattern: /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g },
+                { tag: 'textarea', type: null, name: 'message', required: false, pattern: false }
+            ]
+
             return (
                 <>
-                    <Form>
-                        <Input onValidate={validate} type='text' name='text' label='name' required={true} />
-                        <Input onValidate={e => validate(e, /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g)} type='email' name='email' label='email' required={true} />
-                        <Input onValidate={validate} type='textarea' name='message' label='message' required={false} />
-                        <button type="submit">Send</button>
-                    </Form>
+                    <Form button='send' inputs={inputs} />
 
                     <p className="icons"><a href="https://www.linkedin.com/in/josh-winkler-17703b86/" rel='noreferrer'>{Icon.linkedin}</a> <a href="https://github.com/webstartupaus" rel='noreferrer'>{Icon.github}</a> <button className="link" onClick={email}>{Icon.email}</button></p>
                 </>
