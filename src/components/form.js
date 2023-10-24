@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Form = ({ button, inputs }) => {
-    const [formVals, setFormVals] = useState(
-        { name: '', email: '', message: '' }
-    )
+    const [formVals, setFormVals] = useState({});
 
     const encode = (data) => {
         return Object.keys(data)
@@ -14,12 +12,25 @@ const Form = ({ button, inputs }) => {
     function netlifySubmit(e) {
         e.preventDefault();
 
+        let button = e.currentTarget.querySelector('button');
+        button.innerHTML = 'sending';
+        button.disabled = true;
+
+        setFormVals({});
+        e.currentTarget.reset();
+
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode({ 'form-name': 'contact', ...this.state })
+            body: encode({ 'form-name': 'contact', ...formVals })
         })
-            .then(() => console.log('success'))
+            .then(() => {
+                button.innerHTML = 'sent';
+                setTimeout(() => {
+                    button.innerHTML = 'send'
+                    button.disabled = false;
+                }, 2000);
+            })
             .catch((e) => console.log(e));
     }
 
@@ -33,16 +44,22 @@ const Form = ({ button, inputs }) => {
         if (pattern && !val.match(pattern)) return input.classList.add('error');
 
         input.classList.remove('error');
-        let form = { ...formVals };
-        form[name] = val;
-        setFormVals(form);
+        let vals = { ...formVals };
+        vals[name] = val;
+        setFormVals(vals);
     }
+
+    useEffect(() => {
+        let newFormVals = {};
+        inputs.map(input => newFormVals[input.name] = '');
+        setFormVals(newFormVals);
+    }, [inputs]);
 
     return (
         <form onSubmit={netlifySubmit}>
             {inputs.map((input, i) =>
-                <Input onValidate={e => validate(e, input.pattern)} val={{ ...input }} key={i} />)
-            }
+                <Input onValidate={e => validate(e, input.pattern)} val={{ ...input }} key={i} />
+            )}
             <button type="submit">{button}</button>
         </form>
     );
@@ -53,7 +70,7 @@ const Input = ({ onValidate, val: { tag, type, name, required } }) => {
 
     switch (tag) {
         case 'textarea':
-            html = <textarea name={name} onChange={onValidate} onBlur={onValidate} required={required}></textarea>
+            html = <textarea name={name} rows='5' onChange={onValidate} onBlur={onValidate} required={required}></textarea>
             break;
         case 'input':
             html = <input type={type} name={name} onChange={onValidate} onBlur={onValidate} required={required} />

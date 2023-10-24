@@ -75,7 +75,7 @@ export const homeSections = {
         }
     },
     contact: {
-        container: 'wide',
+        container: 'narrow',
         title: 'Contact',
         fn: () => {
             function email(e) {

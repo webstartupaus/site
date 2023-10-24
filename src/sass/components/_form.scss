@@ -4,7 +4,10 @@ form {
     margin-bottom: 20px;
 
     button{
+        width: 20%;
+        max-width: 200px;
         margin-top: 10px;
+        margin-left: auto;
     }
     
     input,
@@ -23,5 +26,9 @@ form {
             border-left-width: 5px;
             background-color: rgb(255, 214, 214);
         }
+    }
+
+    textarea {
+        resize: none;
     }
 }

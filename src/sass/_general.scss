@@ -96,6 +96,11 @@ button {
             background-color: var(--highlight) !important;
         }
     }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: initial;
+    }
 }
 
 .flex-center {
