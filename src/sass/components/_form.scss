@@ -10,8 +10,9 @@ form {
         margin-left: auto;
 
         &.good {
-            background: green;
-            color: var(--white);
+            background: green !important;
+            color: var(--white) !important;
+            opacity: 1;
         }
     }
     
