@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 
-const ScrollLink = ({ link = '/', text, highlight = null, css = '', isScroll = true, onMenu }) => {
+const ScrollLink = ({ link = '/', target ='', children, highlight = null, css = '', isScroll = true, onMenu }) => {
     const params = useParams();
     const navigate = useNavigate();
     
@@ -8,21 +8,24 @@ const ScrollLink = ({ link = '/', text, highlight = null, css = '', isScroll = t
         e.preventDefault();
         
         if (isScroll) {
-            // add section to URL to keep place if refreshed
-            let url = 'https://me.webstartup.au';
-            if (link !== 'toTop') window.history.pushState(null, 'J Portfolio', `${url}/${link}`);
-            else window.history.pushState(null, 'J Portfolio', `${url}`);
-
             // remove active links
             let activeLink = document.querySelector('nav .active');
             if (activeLink) activeLink.classList.remove('active');
 
-            // set current link to active
-            e.currentTarget.classList.add('active');
+            // add section to URL to keep place if refreshed
+            if (target === 'toTop') {
+                window.history.pushState(null, 'J Portfolio', `${process.env.REACT_APP_URL}`);
+            }
+            else {
+                window.history.pushState(null, 'J Portfolio', `${process.env.REACT_APP_URL}${link}`);
+
+                // set current link to active
+                e.currentTarget.classList.add('active');               
+            }
 
             // scroll to location
             window.scrollTo({
-                top: document.getElementById(link).offsetTop,
+                top: document.getElementById(target).offsetTop,
                 behavior: "smooth"
             });
 
@@ -41,8 +44,8 @@ const ScrollLink = ({ link = '/', text, highlight = null, css = '', isScroll = t
     style = `${css} ${style}`;
 
     return (
-        <a href={`/${link}`} className={style} onClick={e => { scroll(e); onMenu(); }
-        }>{text}</a>
+        <a href={`${link}`} className={style} onClick={e => { scroll(e); onMenu(); }
+        }>{children}</a>
     );
 }
 

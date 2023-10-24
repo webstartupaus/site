@@ -38,30 +38,29 @@ const Header = ({ scroll }) => {
             <div id="toTop"></div>
 
             <header id='header'>
-                <h1><Link to='/' className='name'><span className='highlight'>josh</span>winkler</Link></h1>
+                <h1><ScrollLink isScroll={scroll} target='toTop' onMenu={closeMenu}><span className='highlight'>josh</span>winkler</ScrollLink></h1>
                 <Toggle onClick={dark} id='dark' />
                 <nav>
                     {menu.map(
                         (item, i) =>
                             <ScrollLink
-                                link={item.text}
-                                text={item.text}
+                                link={`/${item.text}`}
+                                target={item.text}
                                 highlight={item.id}
                                 isScroll={scroll}
                                 onMenu={toggleMenu}
                                 key={`link-${i}`}
-                            />
+                            >{item.text}</ScrollLink>
                     )}
                 </nav>
                 <button className='mobile-menu' onClick={toggleMenu}>{!isOpen ? Icon.bars : Icon.close}</button>
             </header>
 
             <ScrollLink
-                text={Icon.chevronUp}
-                link='toTop'
+                target='toTop'
                 css='backUp'
                 onMenu={closeMenu}
-            />
+            >{Icon.chevronUp}</ScrollLink>
         </>
     );
 }
