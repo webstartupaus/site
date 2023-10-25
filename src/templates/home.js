@@ -26,6 +26,12 @@ const Home = () => {
                 behavior: "smooth"
             });
         }
+        else {
+            window.scrollTo({
+                top: document.getElementById('toTop').offsetTop,
+                behavior: "smooth"
+            });
+        }
     }, [navigate, isSection, params]);
 
     return (
