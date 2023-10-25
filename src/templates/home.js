@@ -7,37 +7,6 @@ import Section from "../components/sections";
 import { homeSections } from "../data/homeSections";
 import { useEffect } from "react";
 
-let sectionTops = {};
-let timeout;
-
-function getSections() {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        sectionTops[section.offsetTop] = section.id;
-    });
-    console.log(sectionTops);
-    console.log('href', document.querySelector('nav a[href="work"]'));
-}
-
-window.addEventListener('load', () => getSections());
-
-window.addEventListener('resize', () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        getSections()
-    }, 100);
-});
-
-window.addEventListener('scroll', (e) => {
-    let tops = Object.keys(sectionTops);
-    let top = e.target.scrollingElement.scrollTop;
-    console.log('top: ', top, tops.indexOf(top));
-    tops.forEach(key => {
-
-    })
-    // if (keys.indexOf(top) !== -1) console.log('scroll');
-});
-
 const Home = () => {
     const params = useParams();
     const navigate = useNavigate();
