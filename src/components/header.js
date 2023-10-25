@@ -43,7 +43,7 @@ const Header = ({ scroll }) => {
                     {menu.map(
                         (item, i) =>
                             <ScrollLink
-                                link={`/${item.text}`}
+                                link={item.text}
                                 target={item.text}
                                 highlight={item.id}
                                 isScroll={scroll}

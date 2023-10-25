@@ -19,4 +19,10 @@ button.link {
     &:hover {
         color: var(--highlight);
     }
+
+    .resume {
+        background: var(--highlight);
+        color: var(--white);
+        padding: 10px;
+    }
 }

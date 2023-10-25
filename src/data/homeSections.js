@@ -38,7 +38,7 @@ export const homeSections = {
                 <>
                     <Posts posts={Work} />
                     <div className='flex-center'>
-                        <a href="/web-resume.pdf" target="_blank">PDF Resume</a>
+                        <a href="/web-resume.pdf" className="resume" target="_blank">PDF Resume</a>
                     </div>
                 </>
             );
