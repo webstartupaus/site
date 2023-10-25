@@ -14,7 +14,7 @@ body.dark {
         }
     }
 
-    button:not(.link) {
+    button:not(.link):not(.mobile-menu) {
         background-color: var(--white);
         color: var(--grey);
     }
