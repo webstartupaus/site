@@ -1,13 +1,16 @@
 @use 'general';
 @use 'text';
-@use 'components/links';
+
+@use 'elements/form';
+@use 'elements/button';
+@use 'elements/links';
+
 @use 'components/header';
 @use 'components/backToTop';
 @use 'components/slides';
 @use 'components/posts';
-@use 'components/contact';
 @use 'components/skills';
 @use 'components/toggle';
-@use 'components/form';
 @use 'components/icons';
+
 @use 'dark';

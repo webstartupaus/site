@@ -1,27 +1,22 @@
 import { useParams, useNavigate } from "react-router-dom";
 
-const ScrollLink = ({ link = '/', target ='', children, highlight = null, css = '', isScroll = true, onMenu }) => {
+const ScrollLink = ({ link = '/', target = '', children, highlight = null, css = '', isScroll = true, onMenu }) => {
     const params = useParams();
     const navigate = useNavigate();
-    
+
     function scroll(e) {
         e.preventDefault();
-        
+
         if (isScroll) {
             // remove active links
             let activeLink = document.querySelector('nav .active');
             if (activeLink) activeLink.classList.remove('active');
 
             // add section to URL to keep place if refreshed
-            if (target === 'toTop') {
-                window.history.pushState(null, 'J Portfolio', `${process.env.REACT_APP_URL}`);
-            }
-            else {
-                window.history.pushState(null, 'J Portfolio', `${process.env.REACT_APP_URL}${link}`);
+            window.history.pushState(null, 'J Portfolio', `${process.env.REACT_APP_URL}${link}`);
 
-                // set current link to active
-                e.currentTarget.classList.add('active');               
-            }
+            // set current link to active
+            if (target !== 'toTop') e.currentTarget.classList.add('active');
 
             // scroll to location
             window.scrollTo({

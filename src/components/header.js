@@ -36,14 +36,18 @@ const Header = ({ scroll }) => {
         <>
             <div id="toTop"></div>
 
-            <header id='header'>
-                <h1><ScrollLink isScroll={scroll} target='toTop' onMenu={closeMenu}><span className='highlight'>josh</span>winkler</ScrollLink></h1>
+            <header id='header' className='flex-center'>
+                <h1><ScrollLink isScroll={scroll} target='toTop' onMenu={closeMenu}>
+                    <span className='highlight'>josh</span>winkler
+                </ScrollLink></h1>
+
                 <Toggle onClick={dark} id='dark' />
+
                 <nav>
                     {menu.map(
                         (item, i) =>
                             <ScrollLink
-                                link={item.text}
+                                link={'/' + item.text}
                                 target={item.text}
                                 highlight={item.id}
                                 isScroll={scroll}

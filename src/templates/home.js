@@ -1,11 +1,13 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Header from "../components/header";
 import Footer from '../components/footer';
 import Section from "../components/sections";
 
+import helper from "../assets/helper";
+
 import { homeSections } from "../data/homeSections";
-import { useEffect } from "react";
 
 const Home = () => {
     const params = useParams();
@@ -15,20 +17,19 @@ const Home = () => {
     const isSection = sections.indexOf(params.section) !== -1;
 
     useEffect(() => {
-        document.title = 'Josh Winkler Portfolio';
+        let meta = {
+            title: 'Josh Winkler | Web Developer',
+            description: 'A portfolio website showcasing some of my work and experience over the last 8 years of professional web development.'
+        }
+
+        helper.seo(meta);
 
         if (params.id && !isSection) {
             navigate('/');
         }
-        else if (isSection) {
-            window.scrollTo({
-                top: document.getElementById(params.section).offsetTop,
-                behavior: "smooth"
-            });
-        }
         else {
             window.scrollTo({
-                top: document.getElementById('toTop').offsetTop,
+                top: document.getElementById(isSection ? params.section : 'toTop').offsetTop,
                 behavior: "smooth"
             });
         }

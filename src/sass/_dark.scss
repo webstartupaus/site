@@ -14,11 +14,6 @@ body.dark {
         }
     }
 
-    button:not(.link):not(.mobile-menu) {
-        background-color: var(--white);
-        color: var(--grey);
-    }
-
     header,
     header nav {
         background: var(--grey);
@@ -32,8 +27,20 @@ body.dark {
         }
     }
 
-    path {
+    .mobile-menu path,
+    p.icons svg path {
         fill: var(--white);
+    }
+
+    .icons a:hover path,
+    .icons button:hover path {
+        fill: var(--highlight);
+    }
+
+    form button:hover,
+    a.button:hover {
+        background-color: var(--white);
+        color: var(--grey);
     }
 
     .backUp {

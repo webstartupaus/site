@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import './main.min.css';
+import './assets/main.min.css';
 
 import Home from './templates/home';
 import Post from './templates/post';
 
 const App = () => {
-    
+
     //dark mode
     useEffect(() => {
         const isDark = localStorage.getItem('dark');
@@ -24,19 +24,20 @@ const App = () => {
             dark = d.getHours() < 6 || d.getHours() > 18;
             localStorage.setItem('dark', dark);
         }
+
         document.querySelector('#dark').checked = dark;
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', dark ? '#000000' : '#ffffff');
         if (dark) document.querySelector('body').classList.add('dark');
         else document.querySelector('body').classList.remove('dark');
     }, []);
 
     return (
-        <>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/:section" element={<Home />} />
-                <Route path="/:cat/:post" element={<Post />} />
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/" element={<Home />} >
+                <Route path=":section" element={<Home />} />
+            </Route>
+            <Route path="/:cat/:post" element={<Post />} />
+        </Routes>
     );
 }
 

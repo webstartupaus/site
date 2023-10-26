@@ -24,7 +24,8 @@ export const Projects = {
             },
             github: null,
             link: null,
-            images: ['portfolio']
+            images: ['portfolio'],
+            seo: { description: '' }
         }
     }
 };

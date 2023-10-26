@@ -1,0 +1,39 @@
+button,
+a.button {
+    cursor: pointer;
+    border: none;
+    padding: 20px 20px;
+    color: var(--white);
+    line-height: 0;
+    font-size: 90%;
+    background-color: var(--highlight);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: var(--grey);
+        color: var(--white);
+    }
+
+    &.mobile-menu {
+        display: none;
+        z-index: 100;
+        margin-left: auto;
+        padding: 10px;
+        width: 40px;
+        line-height: 0;
+        background: none;
+
+        &:hover {
+            background-color: var(--highlight);
+
+            path {
+                fill: var(--white);
+            }
+        }
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: initial;
+    }
+}
